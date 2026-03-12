@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+    .container{
+            background-color: rgb(150, 160, 185);
+            padding: 20px;
+            width: 500px;
+            margin: auto;
+            border: 1px solid rgb(116, 136, 180);
+            border-radius: 5%;
+        }
+     body {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            margin-top: 80px;
+            background: rgb(46, 84, 102);
+        }
+      input{
+            padding: 6px;
+            width: 80%;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        button{
+            padding: 8px 15px;
+            width: 80%;
+            border-radius: 5px;
+            background-color: rgb(156, 188, 207);
+        }
+
+        .output{
+            margin-top: 15px;
+            text-align: left;
+        }    
+</style>
+    
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Electricity Consumption Classifier</h1>
+        <h3>kWh</h3>
+        <input type="number" id="kwh" placeholder="Input kilowattt per hour">
+        <button onclick="evaluateKWH()"> Consumption Classification </button> 
+    <div class="output">
+        <p id="category"> </p>
+    </div>
+    </div>
+
+    <script>
+        function evaluateKWH(){
+            var kilowph = document.getElementById("kwh").value;
+
+            if(kilowph === ""){
+                alert("Please enter a value for kWh.");
+                return;
+            }
+
+            kilowph = Number(kilowph);
+            var cat = "";
+
+            if(kilowph <= 100){
+                cat = "Lifeline Consumer, Discounted electricity rates";
+            } else if(kilowph <= 200){
+                cat = "Low Consumption, Normal residency rates";
+            } else if(kilowph <= 300){
+                cat = "Average Consumption, Typical electricity usage";
+            } else if(kilowph <= 500){
+                cat = "High Consumption, Higher electricity usage";
+            } else if(kilowph > 500){
+                cat = "Excessive Consumption, Heavy electricity users";
+            }
+
+              document.getElementById("category").innerHTML = cat;
+
+
+        }
+        
+
+    </script>
+</body>
+</html>
